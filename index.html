@@ -9,18 +9,67 @@
   </style>
 </head>
 <body>
-  <h1>Guest Table Search</h1>
-  <input type="text" id="searchInput" placeholder="Enter guest name">
-  <button onclick="searchTable()">Search</button>
-  <div id="result"></div>
+  <div class="left-section">
+    <h1 class="title-section">Guest Table Search</h1>
+    <input class="right-section" type="text" id="searchInput" placeholder="Enter guest name">
+  </div>
+ 
+  <div class="result-section" id="result"></div>
+
+  <style>
+  body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+h1 {
+  text-align: center;
+}
+
+#searchInput {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  width: 300px;
+}
+
+#result {
+  margin-top: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+}
+
+th {
+  font-weight: bold;
+  border: 1px solid #ccc;
+  padding: 5px;
+}
+
+td {
+  padding: 5px;
+  text-align: left;
+  vertical-align: middle;
+  border: 1px solid #ccc;
+}
+
+  </style>
 
   <script>
     function searchTable() {
       var input = document.getElementById("searchInput").value.toUpperCase();
       var resultContainer = document.getElementById("result");
       resultContainer.innerHTML = "";
-
-      fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vSYSLfzZ_xsJ8EnJ9Yq4T3ee_-5otgKsmbOYpcdqZLH86No797lFQ2g-cN9W35kXEq9ws1iEB0eTsbO/pub?gid=923541529&single=true&output=csv')
+      var db_url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSYSLfzZ_xsJ8EnJ9Yq4T3ee_-5otgKsmbOYpcdqZLH86No797lFQ2g-cN9W35kXEq9ws1iEB0eTsbO/pub?gid=923541529&single=true&output=csv'
+      fetch(db_url)
         .then(function (response) {
           return response.text();
         })
@@ -62,6 +111,7 @@
               table.appendChild(row);
             });
 
+            resultContainer.innerHTML = "";
             resultContainer.appendChild(table);
           } else {
             resultContainer.innerHTML = "No matching guests found.";
@@ -71,6 +121,9 @@
           console.log("Error fetching guest data:", error);
         });
     }
+
+    var searchInput = document.getElementById("searchInput");
+    searchInput.addEventListener("input", searchTable);
   </script>
 </body>
 </html>
