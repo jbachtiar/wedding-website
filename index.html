@@ -30,7 +30,7 @@
     font-size: 35px;
     padding: 10px;
     box-sizing: border-box;
-
+    border-radius: 20px;
   }
   
   #result {
@@ -57,8 +57,8 @@
     border: 1px solid #ccc;
   }
 
-  td:nth-child(3) {
-  border: none;
+  td:nth-child(3), th:nth-child(3) {
+    border: none;
   }
   /* Existing CSS styles */
   
@@ -81,6 +81,7 @@
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+    border-radius: 35px;
   }
   
   .close {
@@ -120,6 +121,20 @@
     .beautified-link:hover {
       border-bottom-color: #666;
     }
+
+    .banner {
+      width: 100%;
+      text-align: center;
+    }
+
+    .banner img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+    }
+    .title-section{
+      font-size: 50px;
+    }
   
   @media screen and (max-width: 600px) {
       /* Adjust styles for smaller screens */
@@ -149,8 +164,16 @@
   </style>
 </head>
 <body>
+  <div class="banner">
+    <img src="https://raw.githubusercontent.com/jbachtiar/wedding-website/main/poster-banner.jpg" alt="Banner Image">
+  </div>
   <div class="left-section">
-    <h1 class="title-section">Find Your Seat</h1>
+    <h1 class="title-section">Welcome to the Engagement Lunch</h1>
+    <h1 class="title-section">of</h1>
+    <h1 class="title-section">Jeremy & Tania</h1>
+    <hr>
+
+    <h1>Find Your Seat</h1>
     <h2><a href="https://raw.githubusercontent.com/jbachtiar/wedding-website/main/table_layout.jpg" class="beautified-link">see table layout</a></h2>
     <input class="right-section" type="text" id="searchInput" placeholder="Enter your name">
   </div>
