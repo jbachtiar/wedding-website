@@ -24,6 +24,8 @@
     width: 100%;
     font-size: 35px;
     padding: 10px;
+    box-sizing: border-box;
+
   }
   
   #result {
@@ -40,14 +42,18 @@
   th {
     font-weight: bold;
     border: 1px solid #ccc;
-    padding: 5px;
+    padding: 15px;
   }
   
   td {
-    padding: 5px;
+    padding: 15px;
     text-align: left;
     vertical-align: middle;
     border: 1px solid #ccc;
+  }
+
+  td:nth-child(3) {
+  border: none;
   }
   /* Existing CSS styles */
   
@@ -190,7 +196,7 @@
 
             nameHeader.appendChild(document.createTextNode("Name"));
             tableNumberHeader.appendChild(document.createTextNode("Table Number"));
-            actionHeader.appendChild(document.createTextNode("See Your Table"));
+            actionHeader.appendChild(document.createTextNode(""));
 
             tableHead.appendChild(nameHeader);
             tableHead.appendChild(tableNumberHeader);
@@ -209,7 +215,7 @@
               
               // Create the button element
               var button = document.createElement("button");
-              button.textContent = "See Your Table";
+              button.textContent = "See your table";
               button.classList.add("see-table-button");
 
               // Add a click event listener to the button
