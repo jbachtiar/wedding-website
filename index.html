@@ -10,11 +10,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
     font-size: 35px;
   }
   
   h1 {
+    text-align: center;
+    font-size : 40px
+  }
+
+  h2{
+    font-size: 35px;
     text-align: center;
   }
   
@@ -47,7 +52,7 @@
   
   td {
     padding: 15px;
-    text-align: left;
+    text-align: center;
     vertical-align: middle;
     border: 1px solid #ccc;
   }
@@ -105,6 +110,16 @@
     cursor: pointer;
     font-size: 35px;
   }
+  .beautified-link {
+      color: #707070;
+      text-decoration: none;
+      border-bottom: 2px solid #707070;
+      transition: border-bottom-color 0.3s ease;
+    }
+
+    .beautified-link:hover {
+      border-bottom-color: #666;
+    }
   
   @media screen and (max-width: 600px) {
       /* Adjust styles for smaller screens */
@@ -116,6 +131,7 @@
         width: 90%;
       }
     }
+    
   </style>
 
 
@@ -134,7 +150,8 @@
 </head>
 <body>
   <div class="left-section">
-    <h1 class="title-section">Find Your Table</h1>
+    <h1 class="title-section">Find Your Seat</h1>
+    <h2><a href="https://raw.githubusercontent.com/jbachtiar/wedding-website/main/table_layout.jpg" class="beautified-link">see table layout</a></h2>
     <input class="right-section" type="text" id="searchInput" placeholder="Enter your name">
   </div>
  
