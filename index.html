@@ -10,8 +10,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     height: 100vh;
+    font-size: 35px;
   }
   
   h1 {
@@ -21,7 +21,9 @@
   #searchInput {
     margin-top: 20px;
     margin-bottom: 10px;
-    width: 300px;
+    width: 100%;
+    font-size: 35px;
+    padding: 10px;
   }
   
   #result {
@@ -95,20 +97,13 @@
     text-decoration: none;
     display: inline-block;
     cursor: pointer;
+    font-size: 35px;
   }
   
   @media screen and (max-width: 600px) {
       /* Adjust styles for smaller screens */
-      .title-section {
-        font-size: 20px;
-      }
-      
-      #searchInput {
-        font-size: 14px;
-      }
-      
       .result-section {
-        font-size: 14px;
+        margin: 5px;
       }
       
       .modal-content {
@@ -134,7 +129,7 @@
 <body>
   <div class="left-section">
     <h1 class="title-section">Guest Table Search</h1>
-    <input class="right-section" type="text" id="searchInput" placeholder="Enter guest name">
+    <input class="right-section" type="text" id="searchInput" placeholder="Enter your name">
   </div>
  
   <div class="result-section" id="result"></div>
@@ -144,7 +139,7 @@
         <span class="close" id="closeButtonId">&times;</span>
         <h2>Table Details</h2>
         <table id="tableDetails">
-          <thead>
+          <thead> 
             <tr>
               <th>Name</th>
               <th>Table Number</th>
