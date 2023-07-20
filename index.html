@@ -1,161 +1,8 @@
 <!DOCTYPE html>
 <html>
-  <style>
-    .result-section{
-    overflow-y: auto;
-    }
-    body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 35px;
-  }
-  
-  h1 {
-    text-align: center;
-    font-size : 40px
-  }
-
-  h2{
-    font-size: 35px;
-    text-align: center;
-  }
-  
-  #searchInput {
-    margin-top: 20px;
-    margin-bottom: 10px;
-    width: 100%;
-    font-size: 35px;
-    padding: 10px;
-    box-sizing: border-box;
-    border-radius: 20px;
-    text-align: center;
-  }
-  
-  #result {
-    margin-top: 20px;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-  }
-  
-  th {
-    font-weight: bold;
-    border: 1px solid #ccc;
-    padding: 15px;
-  }
-  
-  td {
-    padding: 15px;
-    text-align: center;
-    vertical-align: middle;
-    border: 1px solid #ccc;
-  }
-
-  td:nth-child(3), th:nth-child(3) {
-    border: none;
-  }
-  /* Existing CSS styles */
-  
-  /* Style for the modal */
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-  }
-  
-  .modal-content {
-    background-color: #fefefe;
-    margin: 10% auto;
-    padding: 50px;
-    border: 1px solid #888;
-    width: 80%;
-    border-radius: 35px;
-  }
-  
-  .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  
-  /* Additional style for the button */
-  .see-table-button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
-    font-size: 35px;
-  }
-  .beautified-link {
-      color: #707070;
-      text-decoration: none;
-      border-bottom: 2px solid #707070;
-      transition: border-bottom-color 0.3s ease;
-    }
-
-    .beautified-link:hover {
-      border-bottom-color: #666;
-    }
-
-    .banner {
-      width: 100%;
-      text-align: center;
-    }
-
-    .banner img {
-      width: 100%;
-      max-width: 100%;
-      height: auto;
-    }
-    .title-section{
-      font-size: 50px;
-    }
-  
-  @media screen and (max-width: 600px) {
-      /* Adjust styles for smaller screens */
-      .result-section {
-        margin: 5px;
-      }
-      
-      .modal-content {
-        width: 90%;
-      }
-    }
-    
-  </style>
-
-
-
-    </style>
-
-
 
 <head>
+  <link rel="stylesheet" href="styles.css">
   <title>Find Your Table</title>
   <style>
     body {
@@ -163,29 +10,27 @@
     }
   </style>
 </head>
-<body>
-  <div class="banner">
-    <img src="https://raw.githubusercontent.com/jbachtiar/wedding-website/main/poster-banner.jpg" alt="Banner Image">
-  </div>
-  <div class="left-section">
-    <h1 class="title-section">Welcome to the Engagement Lunch</h1>
-    <h1 class="title-section">of</h1>
-    <h1 class="title-section">Jeremy & Tania</h1>
-    <hr>
 
-    <h1>Find Your Seat</h1>
-    <h2><a href="https://raw.githubusercontent.com/jbachtiar/wedding-website/main/table_layout.jpg" class="beautified-link">see table layout</a></h2>
-    <input class="right-section" type="text" id="searchInput" placeholder="Enter your name">
-  </div>
- 
-  <div class="result-section" id="result"></div>
-    
+<body>
+  <div class="background-container">
+    <div class="left-section">
+      <h1 class="title-section" style="margin-top: 60px;">Lunch Reception of</h1>
+      <h1 class="title-section" style="font-size: 80px;">Jeremy & Tania</h1>
+
+      <h1>Find Your Seat</h1>
+      <h2><a href="https://raw.githubusercontent.com/jbachtiar/wedding-website/main/table_layout.jpg"
+          class="beautified-link">see table layout</a></h2>
+      <input class="right-section" type="text" id="searchInput" placeholder="Enter your name">
+    </div>
+
+    <div class="result-section" id="result"></div>
+
     <div id="tableDetailsModal" class="modal">
       <div class="modal-content">
         <span class="close" id="closeButtonId">&times;</span>
         <h2>Table Details</h2>
         <table id="tableDetails">
-          <thead> 
+          <thead>
             <tr>
               <th>Name</th>
               <th>Table Number</th>
@@ -196,175 +41,180 @@
           </tbody>
         </table>
       </div>
-    
-  </div>
 
-  
+    </div>
 
-  <script>
-    function searchTable() {
-      var input = document.getElementById("searchInput").value.toUpperCase();
-      var resultContainer = document.getElementById("result");
-      resultContainer.innerHTML = "";
-      var db_url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSYSLfzZ_xsJ8EnJ9Yq4T3ee_-5otgKsmbOYpcdqZLH86No797lFQ2g-cN9W35kXEq9ws1iEB0eTsbO/pub?gid=923541529&single=true&output=csv'
-      fetch(db_url)
-        .then(function (response) {
-          return response.text();
-        })
-        .then(function (data) {
+
+
+    <script>
+      function searchTable() {
+        var input = document.getElementById("searchInput").value.toUpperCase();
+        var resultContainer = document.getElementById("result");
+        resultContainer.innerHTML = "";
+        var db_url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSYSLfzZ_xsJ8EnJ9Yq4T3ee_-5otgKsmbOYpcdqZLH86No797lFQ2g-cN9W35kXEq9ws1iEB0eTsbO/pub?gid=923541529&single=true&output=csv'
+        fetch(db_url)
+          .then(function (response) {
+            return response.text();
+          })
+          .then(function (data) {
+            var lines = data.split('\n');
+            var matchingGuests = [];
+
+            for (var i = 1; i < lines.length; i++) {
+              var row = lines[i].split(',');
+              var guestName = row[0].trim().toUpperCase();
+
+              if (guestName.includes(input)) {
+                matchingGuests.push({
+                  name: row[0].trim(),
+                  tableNumber: row[1].trim()
+                });
+              }
+            }
+
+            if (matchingGuests.length > 0) {
+              var table = document.createElement("table");
+              var tableHead = document.createElement("tr");
+              var nameHeader = document.createElement("th");
+              var tableNumberHeader = document.createElement("th");
+              var actionHeader = document.createElement("th");
+
+              nameHeader.appendChild(document.createTextNode("Name"));
+              tableNumberHeader.appendChild(document.createTextNode("Table Number"));
+              actionHeader.appendChild(document.createTextNode(""));
+
+              tableHead.appendChild(nameHeader);
+              tableHead.appendChild(tableNumberHeader);
+              tableHead.appendChild(actionHeader);
+
+              table.appendChild(tableHead);
+
+              matchingGuests.forEach(function (guest) {
+                var row = document.createElement("tr");
+                var nameCell = document.createElement("td");
+                var tableNumberCell = document.createElement("td");
+                var buttonCell = document.createElement("td");
+
+                nameCell.appendChild(document.createTextNode(guest.name));
+                tableNumberCell.appendChild(document.createTextNode(guest.tableNumber));
+
+                // Create the button element
+                var button = document.createElement("button");
+                button.textContent = "See your table";
+                button.classList.add("see-table-button");
+
+                // Add a click event listener to the button
+                button.addEventListener("click", function () {
+                  showTableDetails(guest.tableNumber);
+                });
+
+                // Append the button to the button cell
+                buttonCell.appendChild(button);
+
+
+
+                row.appendChild(nameCell);
+                row.appendChild(tableNumberCell);
+                row.appendChild(buttonCell);
+                table.appendChild(row);
+              });
+
+              resultContainer.innerHTML = "";
+              resultContainer.appendChild(table);
+            } else {
+              resultContainer.innerHTML = "No matching guests found.";
+            }
+          })
+          .catch(function (error) {
+            console.log("Error fetching guest data:", error);
+          });
+      }
+
+      var searchInput = document.getElementById("searchInput");
+      searchInput.addEventListener("input", searchTable);
+
+      var seeTableButtons = document.getElementsByClassName('see-table-button');
+      Array.from(seeTableButtons).forEach(function (button) {
+        button.addEventListener('click', function () {
+          var row = this.parentNode.parentNode;
+          var tableNumber = row.cells[1].textContent;
+          showTableDetails(tableNumber);
+        });
+      });
+      // Function to display the table details modal
+      async function showTableDetails(tableNumber) {
+        // Get the modal element
+        var modal = document.getElementById('tableDetailsModal');
+
+        // Get the table details
+        console.log(tableNumber)
+        var tableDetails = await getTableDetails(tableNumber);
+        console.log(tableDetails)
+
+        // Get the table body element in the modal
+        var tableBody = document.querySelector('#tableDetails tbody');
+        tableBody.innerHTML = '';
+
+        // Add the guest details to the table
+        tableDetails.forEach(function (guest) {
+          var newRow = tableBody.insertRow();
+          newRow.insertCell().textContent = guest.name;
+          newRow.insertCell().textContent = guest.tableNumber;
+        });
+
+        // Show the modal
+        modal.style.display = 'block';
+      }
+      // Function to retrieve the guest details for a specific table number
+      async function getTableDetails(tableNumber) {
+        try {
+          // Fetch the guest data from the Google Sheets CSV URL
+          var dbUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSYSLfzZ_xsJ8EnJ9Yq4T3ee_-5otgKsmbOYpcdqZLH86No797lFQ2g-cN9W35kXEq9ws1iEB0eTsbO/pub?gid=923541529&single=true&output=csv';
+          var response = await fetch(dbUrl);
+          var data = await response.text();
+
+          // Parse the CSV data
           var lines = data.split('\n');
-          var matchingGuests = [];
+          var guestData = [];
 
+          // Iterate over each row and extract the name and table number
           for (var i = 1; i < lines.length; i++) {
             var row = lines[i].split(',');
-            var guestName = row[0].trim().toUpperCase();
+            var guestName = row[0].trim();
+            var guestTableNumber = row[1].trim();
 
-            if (guestName.includes(input)) {
-              matchingGuests.push({
-                name: row[0].trim(),
-                tableNumber: row[1].trim()
+            // Check if the table number matches the input
+            if (guestTableNumber === tableNumber) {
+              guestData.push({
+                name: guestName,
+                tableNumber: guestTableNumber
               });
             }
           }
 
-          if (matchingGuests.length > 0) {
-            var table = document.createElement("table");
-            var tableHead = document.createElement("tr");
-            var nameHeader = document.createElement("th");
-            var tableNumberHeader = document.createElement("th");
-            var actionHeader = document.createElement("th");
-
-            nameHeader.appendChild(document.createTextNode("Name"));
-            tableNumberHeader.appendChild(document.createTextNode("Table Number"));
-            actionHeader.appendChild(document.createTextNode(""));
-
-            tableHead.appendChild(nameHeader);
-            tableHead.appendChild(tableNumberHeader);
-            tableHead.appendChild(actionHeader);
-
-            table.appendChild(tableHead);
-
-            matchingGuests.forEach(function (guest) {
-              var row = document.createElement("tr");
-              var nameCell = document.createElement("td");
-              var tableNumberCell = document.createElement("td");
-              var buttonCell = document.createElement("td");
-
-              nameCell.appendChild(document.createTextNode(guest.name));
-              tableNumberCell.appendChild(document.createTextNode(guest.tableNumber));
-              
-              // Create the button element
-              var button = document.createElement("button");
-              button.textContent = "See your table";
-              button.classList.add("see-table-button");
-
-              // Add a click event listener to the button
-              button.addEventListener("click", function() {
-                showTableDetails(guest.tableNumber);
-              });
-
-              // Append the button to the button cell
-              buttonCell.appendChild(button);
-
-
-
-              row.appendChild(nameCell);
-              row.appendChild(tableNumberCell);
-              row.appendChild(buttonCell);
-              table.appendChild(row);
-            });
-
-            resultContainer.innerHTML = "";
-            resultContainer.appendChild(table);
-          } else {
-            resultContainer.innerHTML = "No matching guests found.";
-          }
-        })
-        .catch(function (error) {
-          console.log("Error fetching guest data:", error);
-        });
-    }
-
-    var searchInput = document.getElementById("searchInput");
-    searchInput.addEventListener("input", searchTable);
-
-var seeTableButtons = document.getElementsByClassName('see-table-button');
-Array.from(seeTableButtons).forEach(function (button) {
-  button.addEventListener('click', function () {
-    var row = this.parentNode.parentNode;
-    var tableNumber = row.cells[1].textContent;
-    showTableDetails(tableNumber);
-  });
-});
-// Function to display the table details modal
-async function showTableDetails(tableNumber) {
-  // Get the modal element
-  var modal = document.getElementById('tableDetailsModal');
-
-  // Get the table details
-  console.log(tableNumber)
-  var tableDetails = await getTableDetails(tableNumber);
-  console.log(tableDetails)
-
-  // Get the table body element in the modal
-  var tableBody = document.querySelector('#tableDetails tbody');
-  tableBody.innerHTML = '';
-
-  // Add the guest details to the table
-  tableDetails.forEach(function (guest) {
-    var newRow = tableBody.insertRow();
-    newRow.insertCell().textContent = guest.name;
-    newRow.insertCell().textContent = guest.tableNumber;
-  });
-
-  // Show the modal
-  modal.style.display = 'block';
-}
-// Function to retrieve the guest details for a specific table number
-async function getTableDetails(tableNumber) {
-  try {
-    // Fetch the guest data from the Google Sheets CSV URL
-    var dbUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSYSLfzZ_xsJ8EnJ9Yq4T3ee_-5otgKsmbOYpcdqZLH86No797lFQ2g-cN9W35kXEq9ws1iEB0eTsbO/pub?gid=923541529&single=true&output=csv';
-    var response = await fetch(dbUrl);
-    var data = await response.text();
-
-    // Parse the CSV data
-    var lines = data.split('\n');
-    var guestData = [];
-
-    // Iterate over each row and extract the name and table number
-    for (var i = 1; i < lines.length; i++) {
-      var row = lines[i].split(',');
-      var guestName = row[0].trim();
-      var guestTableNumber = row[1].trim();
-
-      // Check if the table number matches the input
-      if (guestTableNumber === tableNumber) {
-        guestData.push({
-          name: guestName,
-          tableNumber: guestTableNumber
-        });
+          return guestData;
+        } catch (error) {
+          console.log('Error fetching guest data:', error);
+          return [];
+        }
       }
-    }
 
-    return guestData;
-  } catch (error) {
-    console.log('Error fetching guest data:', error);
-    return [];
-  }
-}
+      var modal = document.getElementById('tableDetailsModal');
+      var closeButton = document.getElementById('closeButtonId');
 
-var modal = document.getElementById('tableDetailsModal');
-var closeButton = document.getElementById('closeButtonId');
+      // Function to close the modal
+      function closeModal() {
+        modal.style.display = 'none';
+      }
 
-// Function to close the modal
-function closeModal() {
-  modal.style.display = 'none';
-}
+      // Event listener for the close button click event
+      closeButton.addEventListener('click', closeModal);
 
-// Event listener for the close button click event
-closeButton.addEventListener('click', closeModal);
-
-  </script>
+    </script>
+  </div>
+  <div class="bottom-container">
+    <p class="bottom-middle-text">12.08.23</p>
+  </div>
 </body>
+
 </html>

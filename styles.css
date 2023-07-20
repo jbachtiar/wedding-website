@@ -1,0 +1,191 @@
+.result-section {
+  overflow-y: auto;
+}
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 35px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 35px;
+  text-align: center;
+}
+
+#searchInput {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  width: 100%;
+  font-size: 35px;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  text-align: center;
+}
+
+#result {
+  margin-top: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th {
+  font-weight: bold;
+  border: 1px solid #ccc;
+  padding: 15px;
+}
+
+td {
+  padding: 15px;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid #ccc;
+}
+
+td:nth-child(3),
+th:nth-child(3) {
+  border: none;
+}
+/* Existing CSS styles */
+
+/* Style for the modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 50px;
+  border: 1px solid #888;
+  width: 80%;
+  border-radius: 35px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Additional style for the button */
+.see-table-button {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  font-size: 35px;
+}
+.beautified-link {
+  color: #707070;
+  text-decoration: none;
+  border-bottom: 2px solid #707070;
+  transition: border-bottom-color 0.3s ease;
+}
+
+.beautified-link:hover {
+  border-bottom-color: #666;
+}
+
+.banner {
+  width: 100%;
+  text-align: center;
+}
+
+.banner img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+.title-section {
+  font-size: 50px;
+  font-family: "BaskervilleOldFaceRegular", serif;
+  color: #cbc1b4;
+  font-weight: 400;
+  margin: 0px;
+  margin-left: 60px;
+  text-align: left;
+}
+
+@media screen and (max-width: 600px) {
+  /* Adjust styles for smaller screens */
+  .result-section {
+    margin: 5px;
+  }
+
+  .modal-content {
+    width: 90%;
+  }
+}
+.background-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("background.jpg");
+  background-size: cover;
+  background-position: center;
+  z-index: -1; /* To place the container behind other content */
+}
+
+@font-face {
+  font-family: "BaskervilleOldFaceRegular";
+  src: url("fonts/BaskervilleBT.ttf") format("truetype");
+  /* Add other font formats if available */
+  font-weight: normal;
+  font-style: normal;
+}
+
+.bottom-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+/* Style the bottom middle text */
+.bottom-middle-text {
+  position: absolute;
+  bottom: 10px; /* Adjust this value as needed to control the vertical position */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 60px; /* Adjust the font size as needed */
+  color: #f8f9fd; /* Change the color to your preference */
+  font-family: "BaskervilleOldFaceRegular", serif;
+  font-weight: 200;
+  /* Add any other styling you want for the text */
+}
