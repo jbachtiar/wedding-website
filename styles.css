@@ -6,6 +6,7 @@ body {
   margin: 20px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   font-size: 35px;
 }
@@ -23,16 +24,17 @@ h2 {
 #searchInput {
   margin-top: 20px;
   margin-bottom: 10px;
-  width: 100%;
-  font-size: 35px;
-  padding: 10px;
-  box-sizing: border-box;
-  border-radius: 20px;
+  font-size: 50px;
+  padding: 20px;
   text-align: center;
 }
 
 #result {
   margin-top: 20px;
+  text-align: center;
+  font-family: "BaskervilleOldFaceRegular", serif;
+  font-weight: 200;
+  color:#918a80;
 }
 
 table {
@@ -99,9 +101,9 @@ th:nth-child(3) {
 
 /* Additional style for the button */
 .see-table-button {
-  background-color: #4caf50;
+  background-color: transparent;
   border: none;
-  color: white;
+  color: #918a80;
   padding: 5px 10px;
   text-align: center;
   text-decoration: none;
@@ -110,10 +112,17 @@ th:nth-child(3) {
   font-size: 35px;
 }
 .beautified-link {
-  color: #707070;
+  color: #cbc1b4;
   text-decoration: none;
-  border-bottom: 2px solid #707070;
+  /* border-bottom: 2px solid #cbc1b4; */
   transition: border-bottom-color 0.3s ease;
+/* 
+  border-radius: 20px 0 0 20px;
+
+  /* Apply a border to the top-left and bottom-right corners */
+  /* border-width: 2px;
+  border-style: solid;
+  border-color: #cbc1b4; */ */
 }
 
 .beautified-link:hover {
@@ -188,4 +197,35 @@ th:nth-child(3) {
   font-family: "BaskervilleOldFaceRegular", serif;
   font-weight: 200;
   /* Add any other styling you want for the text */
+}
+
+.search-box {
+  border: none; /* Remove the default border */
+  border-bottom: 2px solid #cbc1b4; /* Add a bottom border */
+  background-color: transparent; /* Set the background to transparent */
+  outline: none; /* Remove the focus outline */
+  padding: 8px; /* Adjust padding as needed */
+  font-size: 18px; /* Adjust the font size as needed */
+  color: #cbc1b4; /* Set the text color to your preference */
+  font-family: "BaskervilleOldFaceRegular", serif;
+  font-weight: 200;
+
+  /* Add any other styling you want for the search box */
+}
+
+.search-box::placeholder {
+  color: #cbc1b4; /* Set the placeholder text color to your preference */
+  font-family: "BaskervilleOldFaceRegular", serif;
+  font-weight: 200;
+}
+
+.new-font {
+  font-family: "BaskervilleOldFaceRegular", serif;
+  font-weight: 200;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
