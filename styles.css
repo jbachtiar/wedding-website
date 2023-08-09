@@ -34,7 +34,7 @@ h2 {
   text-align: center;
   font-family: "BaskervilleOldFaceRegular", serif;
   font-weight: 200;
-  color:#918a80;
+  color: #918a80;
 }
 
 table {
@@ -116,13 +116,20 @@ th:nth-child(3) {
   text-decoration: none;
   /* border-bottom: 2px solid #cbc1b4; */
   transition: border-bottom-color 0.3s ease;
-/* 
-  border-radius: 20px 0 0 20px;
+  /* 
+  border-radius: 10px 10px 10px 10px;
+  padding: 10x; */
 
   /* Apply a border to the top-left and bottom-right corners */
   /* border-width: 2px;
   border-style: solid;
-  border-color: #cbc1b4; */ */
+  border-color: #cbc1b4;*/
+}
+a.beautified-link svg {
+  width: 16px;
+  height: 16px;
+  fill: #cbc1b4;
+  margin-right: 5px;
 }
 
 .beautified-link:hover {
