@@ -87,7 +87,7 @@ th:nth-child(3) {
 .close {
   color: #aaa;
   float: right;
-  font-size: 28px;
+  font-size: 45px;
   font-weight: bold;
   cursor: pointer;
 }
@@ -235,4 +235,24 @@ a.beautified-link svg {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#tableDetails {
+  font-family: "BaskervilleOldFaceRegular", serif;
+  font-weight: 200;
+  color: #918a80;
+}
+
+.table-details {
+  font-family: "BaskervilleOldFaceRegular", serif;
+  font-weight: 200;
+  color: #918a80;
+}
+
+.legends {
+  font-family: "BaskervilleOldFaceRegular", serif;
+  font-weight: 200;
+  color: #cbc1b4;
+  text-align: center;
+  margin-top: 25px;
 }

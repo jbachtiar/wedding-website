@@ -19,7 +19,7 @@
 
       <h1 class="new-font" style="color: #918a80; margin-top: 150px;">Looking for your seat?</h1>
       <h2 class="new-font" style="color: #e8dbca"><a
-          href="https://raw.githubusercontent.com/jbachtiar/wedding-website/main/table_layout.jpg"
+          href="https://raw.githubusercontent.com/jbachtiar/wedding-website/main/table_layout2.jpg"
           class="beautified-link">
           see table layout</a></h2>
       <div class="container">
@@ -33,7 +33,7 @@
     <div id="tableDetailsModal" class="modal">
       <div class="modal-content">
         <span class="close" id="closeButtonId">&times;</span>
-        <h2>Table Details</h2>
+        <h2 class="table-details">Table Details</h2>
         <table id="tableDetails">
           <thead>
             <tr>
@@ -45,6 +45,13 @@
             <!-- Guest details for the selected table will be dynamically added here -->
           </tbody>
         </table>
+        <div class="legends">
+          (M) : Halal | (NP) : No Shellfish
+        </div>
+        <div class="legends">
+          (V) : Vegetarian | (BC) : Baby Chair
+        </div>
+
       </div>
 
     </div>
@@ -56,7 +63,7 @@
         var input = document.getElementById("searchInput").value.toUpperCase();
         var resultContainer = document.getElementById("result");
         resultContainer.innerHTML = "";
-        var db_url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSYSLfzZ_xsJ8EnJ9Yq4T3ee_-5otgKsmbOYpcdqZLH86No797lFQ2g-cN9W35kXEq9ws1iEB0eTsbO/pub?gid=923541529&single=true&output=csv'
+        var db_url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSuLiEQuS1OTeWyjOb66WxhtYsaJDz5geLNW1rAw1ZwVJnQEJndbYjZwYyI2EFtgcsa6pUPtL220sfy/pub?gid=1525874626&single=true&output=csv'
         fetch(db_url)
           .then(function (response) {
             return response.text();
@@ -174,7 +181,7 @@
       async function getTableDetails(tableNumber) {
         try {
           // Fetch the guest data from the Google Sheets CSV URL
-          var dbUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSYSLfzZ_xsJ8EnJ9Yq4T3ee_-5otgKsmbOYpcdqZLH86No797lFQ2g-cN9W35kXEq9ws1iEB0eTsbO/pub?gid=923541529&single=true&output=csv';
+          var dbUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSuLiEQuS1OTeWyjOb66WxhtYsaJDz5geLNW1rAw1ZwVJnQEJndbYjZwYyI2EFtgcsa6pUPtL220sfy/pub?gid=1525874626&single=true&output=csv';
           var response = await fetch(dbUrl);
           var data = await response.text();
 
