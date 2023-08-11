@@ -35,6 +35,8 @@ h2 {
   font-family: "BaskervilleOldFaceRegular", serif;
   font-weight: 200;
   color: #918a80;
+  padding-left: 25px;
+  padding-right: 25px;
 }
 
 table {
